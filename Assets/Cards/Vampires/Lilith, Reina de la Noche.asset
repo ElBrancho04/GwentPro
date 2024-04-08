@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9139b60a6b2dfe84ebd148441f20cff8, type: 3}
+  m_Name: Lilith, Reina de la Noche
+  m_EditorClassIdentifier: 
+  cardImage: {fileID: 0}
+  id: 1
+  cardName: Lilith, Reina de la Noche
+  powerDescription: "Puede eliminar la carta con m\xE1s poder del campo."
+  cardDescription: "Puede eliminar la carta con m\xE1s poder del campo."
+  isGold: 1
+  cardType: 0
+  isActive: 0
+  player: 1
+  melee: 0
+  ranged: 1
+  siege: 0
+  attackPower: 3
