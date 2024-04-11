@@ -12,16 +12,24 @@ public class GameManager : MonoBehaviour
     public CardSpawner cardSpawner;
     public GameObject cardPrefab1;
     public GameObject cardPrefab2;
-    public PlayerHand playerHand1;
-    public PlayerHand playerHand2;
+    public File playerHand1;
+    public File playerHand2;
     public ShowCard showCard1;
     public ShowCard showCard2;
     public CardUI showedCard;
+    public int roundsWon1;
+    public int roundsWon2;
+    public GameObject punto1P1;
+    public GameObject punto2P1;
+    public GameObject punto1P2;
+    public GameObject punto2P2;
+    public RoundWinnerCalculator roundWinnerCalculator;
 
     void LateUpdate()
     {
         if (playerPass[0] == true && playerPass[1] == true)
         {
+            roundWinnerCalculator.RoundWinnerCal();
             playerPass[0] = false;
             playerPass[1] = false;
             StartCoroutine(DrawCards(playerDeck1,playerDeck2));
@@ -65,5 +73,31 @@ public class GameManager : MonoBehaviour
             showCard1.gameObject.SetActive(false);
             showCard2.gameObject.SetActive(false);
         }
+
+        if(roundsWon1 == 1)
+        punto1P1.SetActive(true);
+
+        if(roundsWon1 == 2)
+        punto2P1.SetActive(true);
+
+        if(roundsWon2 == 1)
+        punto1P2.SetActive(true);
+
+        if(roundsWon2 == 2)
+        punto2P2.SetActive(true);
+    }
+
+    public void RemoveCard(GameObject card)
+    {
+        List<CardData> cardsFile = card.transform.parent.GetComponent<File>().cards;
+        cardsFile.Remove(card.GetComponent<CardUI>().card);
+        StartCoroutine(Wait(card));
+    }
+
+    IEnumerator Wait(GameObject card)
+    {
+        Destroy(card.GetComponent<CardUI>());
+        yield return new WaitForSecondsRealtime(2.5f);
+        Destroy(card);
     }
 }

@@ -9,9 +9,10 @@ using System.IO;
 
 public class CardSpawner : MonoBehaviour
 {
-    public PlayerHand fileFile;
+    public File fileFile;
     public GameObject cardPrefab; // Prefab de la carta
     public Transform fieldTransform; // Transform del área de juego donde se mostrarán las cartas
+    public GameManager gameManager;
 
     // Método para instanciar una carta en el campo
     public void SpawnCard(CardData cardData)
@@ -19,6 +20,15 @@ public class CardSpawner : MonoBehaviour
         GameObject cardObject = Instantiate(cardPrefab, fieldTransform);
         CardUI cardUI = cardObject.GetComponent<CardUI>();
         cardUI.card = cardData;
-        fileFile.cards.Add(cardData);       
+        fileFile.cards.Add(cardData);
+        if (fileFile.cards.Count > 10)
+        {
+            gameManager.RemoveCard(cardObject);
+        }       
+    }
+
+    public void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
     }
 }

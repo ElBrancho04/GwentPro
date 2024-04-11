@@ -6,7 +6,7 @@ using UnityEngine;
 public class DrawCard : MonoBehaviour
 {
     public PlayerDeck deck;
-    public PlayerHand hand;
+    public File hand;
     public GameObject cardPrefab;
     public Transform handTransform;
     

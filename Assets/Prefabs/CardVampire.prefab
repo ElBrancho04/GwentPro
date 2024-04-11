@@ -971,6 +971,9 @@ MonoBehaviour:
   attackPowerText: {fileID: 9189576937941381273}
   isSelected: 0
   myTransform: {fileID: 4858169135079851155}
+  melee: {fileID: 5628203005051226602}
+  ranged: {fileID: 7650364300229818049}
+  siege: {fileID: 3517178208420507793}
 --- !u!114 &4414809654998830309
 MonoBehaviour:
   m_ObjectHideFlags: 0

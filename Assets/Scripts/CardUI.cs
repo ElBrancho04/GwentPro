@@ -13,6 +13,9 @@ public class CardUI : MonoBehaviour
     public TextMeshProUGUI attackPowerText;
     public bool isSelected;
     public Transform myTransform;
+    public GameObject melee;
+    public GameObject ranged;
+    public GameObject siege;
 
     void Start()
     {
@@ -29,6 +32,10 @@ public class CardUI : MonoBehaviour
         {
             isSelected = false;
         }
+
+        melee.SetActive(card.melee);
+        ranged.SetActive(card.ranged);
+        siege.SetActive(card.siege);
     }
     public void OnClick()
     {

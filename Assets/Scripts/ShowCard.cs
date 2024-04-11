@@ -11,6 +11,9 @@ public class ShowCard : MonoBehaviour
     public TextMeshProUGUI descriptionText;
     public TextMeshProUGUI attackPowerText;
     public int player;
+    public GameObject melee;
+    public GameObject ranged;
+    public GameObject siege;
 
     void Start()
     {
@@ -26,7 +29,11 @@ public class ShowCard : MonoBehaviour
         nameText.text = "" + gameManager.showedCard.card.cardName;
         descriptionText.text = "" + gameManager.showedCard.card.cardDescription;
         attackPowerText.text = "" + gameManager.showedCard.card.attackPower;
+        melee.SetActive(gameManager.showedCard.card.melee);
+        ranged.SetActive(gameManager.showedCard.card.ranged);
+        siege.SetActive(gameManager.showedCard.card.siege);
         }
+        
     }
 }
         

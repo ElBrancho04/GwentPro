@@ -12,7 +12,7 @@ public class Dra : MonoBehaviour
 {
     public GameManager gameManager;
     public PlayerDeck deck;
-    public PlayerHand playerHand;
+    public File playerHand;
     public Transform playerHandTransform;
     public GameObject cardPrefab;
     // Start is called before the first frame update

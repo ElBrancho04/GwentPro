@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerDeck : MonoBehaviour
@@ -7,6 +8,8 @@ public class PlayerDeck : MonoBehaviour
     public static List<CardData> cards = new List<CardData>();
     public List<CardData> deck = new List<CardData>();
     public int deckSize;
+    public GameObject cardBack;
+
      public CardData DrawCard() {
             if (deck.Count > 0) {
                 CardData drawnCard = deck[0];
@@ -43,5 +46,6 @@ public class PlayerDeck : MonoBehaviour
     void Update()
     {
        deckSize = deck.Count; 
+       cardBack.GetComponent<TextMeshProUGUI>().text = cards.Count.ToString();
     }
 }

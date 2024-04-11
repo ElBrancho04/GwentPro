@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHand : MonoBehaviour
+public class File : MonoBehaviour
 {
       public GameManager gameManager;
       public List<CardData> cards = new List<CardData>();   
@@ -16,7 +16,7 @@ public class PlayerHand : MonoBehaviour
 
       public void OnClick()
       {
-            if (gameManager.selectedCard != null && gameManager.playerPass[player - 1] == false && player == gameManager.selectedCard.card.player && ((gameManager.selectedCard.card.melee == melee && melee == true )||(gameManager.selectedCard.card.ranged == ranged && ranged == true )||(gameManager.selectedCard.card.siege == siege && siege == true )))
+            if (cards.Count < 10 && gameManager.selectedCard != null && gameManager.playerPass[player - 1] == false && player == gameManager.selectedCard.card.player && ((gameManager.selectedCard.card.melee == melee && melee == true )||(gameManager.selectedCard.card.ranged == ranged && ranged == true )||(gameManager.selectedCard.card.siege == siege && siege == true )))
             {
                   gameManager.selectedCard.transform.SetParent(fileTransform);
                   cards.Add(gameManager.selectedCard.card);
