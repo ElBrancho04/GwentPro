@@ -13,14 +13,17 @@ MonoBehaviour:
   m_Name: Greyback, el Devorador de Almas
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  id: 5
+  id: 18
   cardName: 'Greyback, el Devorador de Almas '
-  powerDescription: 'Greyback, el Devorador de Almas '
-  cardDescription: 'Greyback, el Devorador de Almas '
-  isGold: 0
+  cardDescription: Puede poner un aumento de 1 en una fila propia.
+  isGold: 1
   cardType: 0
   isActive: 0
   player: 2
+  efectFactor: 1
+  powerVar: 0
+  playEfect: 0
+  actPower: 0
   melee: 1
   ranged: 0
   siege: 0

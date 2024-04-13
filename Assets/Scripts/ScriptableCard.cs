@@ -16,13 +16,15 @@ public class CardData : ScriptableObject
     public Sprite cardImage;
     public int id;
     public string cardName;
-    public string powerDescription;
     public string cardDescription;
     public bool isGold;
     public CardType cardType;
     bool isUnitCard;
     public bool isActive = false;
     public int player;
+    public int efectFactor;
+    public int powerVar;
+    public bool playEfect;
  
     // Propiedades específicas para cartas de unidad
     public bool melee;

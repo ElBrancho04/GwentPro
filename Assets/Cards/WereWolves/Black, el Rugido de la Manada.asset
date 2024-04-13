@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9139b60a6b2dfe84ebd148441f20cff8, type: 3}
-  m_Name: Joseph Amadeus von Dracula (Pepito)
+  m_Name: Black, el Rugido de la Manada
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  id: 1
-  cardName: Joseph Amadeus von Dracula (Pepito)
-  cardDescription: Puede duplicar el poder de ataque de una unidad aliada en el campo.
-  isGold: 1
+  id: 21
+  cardName: Black, el Rugido de la Manada
+  cardDescription: Puede eliminar la carta con menos poder del rival.
+  isGold: 0
   cardType: 0
   isActive: 0
-  player: 1
-  melee: 1
+  player: 2
+  melee: 0
   ranged: 1
   siege: 0
-  attackPower: 7
+  attackPower: 4

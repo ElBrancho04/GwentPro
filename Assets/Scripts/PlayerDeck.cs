@@ -34,7 +34,6 @@ public class PlayerDeck : MonoBehaviour
             cards.RemoveAt(randomIndex);
         }
     }
-    // Start is called before the first frame update
     void Start()
     {
         cards = new List<CardData>(deck);
@@ -42,10 +41,9 @@ public class PlayerDeck : MonoBehaviour
         Shuffle();  
     }
 
-    // Update is called once per frame
     void Update()
     {
        deckSize = deck.Count; 
-       cardBack.GetComponent<TextMeshProUGUI>().text = cards.Count.ToString();
+       cardBack.GetComponentInChildren<TextMeshProUGUI>().text = deck.Count.ToString();
     }
 }

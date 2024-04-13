@@ -10,17 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9139b60a6b2dfe84ebd148441f20cff8, type: 3}
-  m_Name: Joseph Amadeus von Dracula (Pepito)
+  m_Name: Vladislav, el Devorador de Almas
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  id: 1
-  cardName: Joseph Amadeus von Dracula (Pepito)
-  cardDescription: Puede duplicar el poder de ataque de una unidad aliada en el campo.
-  isGold: 1
+  id: 6
+  cardName: Vladislav, el Devorador de Almas
+  cardDescription: Pone un clima de 1 en la fila enemiga.
+  isGold: 0
   cardType: 0
   isActive: 0
   player: 1
-  melee: 1
-  ranged: 1
-  siege: 0
-  attackPower: 7
+  efectFactor: 0
+  powerVar: 0
+  playEfect: 0
+  actPower: 0
+  melee: 0
+  ranged: 0
+  siege: 1
+  attackPower: 4

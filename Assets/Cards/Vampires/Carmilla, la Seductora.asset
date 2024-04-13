@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Carmilla, la Seductora
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  id: 2
+  id: 3
   cardName: Carmilla, la Seductora
-  powerDescription: Puede poner un aumento de poder en una fila propia que incrementa
-    el poder de todas las unidades en esa fila en 2.
-  cardDescription: Puede poner un aumento de poder en una fila propia que incrementa
-    el poder de todas las unidades en esa fila en 2.
+  cardDescription: Incrementa el poder de una fila propia en 2.
   isGold: 1
   cardType: 0
   isActive: 0
   player: 1
+  efectFactor: 2
+  powerVar: 0
+  playEfect: 0
+  actPower: 0
   melee: 1
   ranged: 0
   siege: 0

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9139b60a6b2dfe84ebd148441f20cff8, type: 3}
-  m_Name: Joseph Amadeus von Dracula (Pepito)
+  m_Name: "N\xE9mesis, el Vampiro Supremo"
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  id: 1
-  cardName: Joseph Amadeus von Dracula (Pepito)
-  cardDescription: Puede duplicar el poder de ataque de una unidad aliada en el campo.
+  id: 5
+  cardName: "N\xE9mesis, el Vampiro Supremo"
+  cardDescription: Puede robar dos cartas del mazo propio.
   isGold: 1
   cardType: 0
   isActive: 0
   player: 1
-  melee: 1
-  ranged: 1
-  siege: 0
-  attackPower: 7
+  melee: 0
+  ranged: 0
+  siege: 1
+  attackPower: 8

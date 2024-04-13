@@ -12,30 +12,42 @@ public class CardUI : MonoBehaviour
     public TextMeshProUGUI descriptionText;
     public TextMeshProUGUI attackPowerText;
     public bool isSelected;
-    public Transform myTransform;
     public GameObject melee;
     public GameObject ranged;
     public GameObject siege;
+    public GameObject gold;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    // Método para asignar los datos de la carta al UI
     void Update()
     {
         nameText.text = "" + card.cardName;
         descriptionText.text = "" + card.cardDescription;
-        attackPowerText.text = "" + card.attackPower;
+        if (card.cardType == CardType.Unit)
+        {
+            
+        melee.SetActive(card.melee);
+        ranged.SetActive(card.ranged);
+        siege.SetActive(card.siege);
+        attackPowerText.text = "" + (card.attackPower + card.powerVar);
+        }
+        
         if (gameManager.selectedCard != this)
         {
             isSelected = false;
         }
+        gold.SetActive(card.isGold);  
 
-        melee.SetActive(card.melee);
-        ranged.SetActive(card.ranged);
-        siege.SetActive(card.siege);
+
+        if(card.playEfect)
+        {
+            Efects efects = FindAnyObjectByType<Efects>();
+            efects.PlayEfect(card);
+            card.playEfect = false;
+        }
     }
     public void OnClick()
     {

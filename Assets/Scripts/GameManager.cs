@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject punto1P2;
     public GameObject punto2P2;
     public RoundWinnerCalculator roundWinnerCalculator;
+    public File fileToPlayEfct;
 
     void LateUpdate()
     {

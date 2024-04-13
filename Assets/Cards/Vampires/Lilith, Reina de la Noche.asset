@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Lilith, Reina de la Noche
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  id: 1
+  id: 2
   cardName: Lilith, Reina de la Noche
-  powerDescription: "Puede eliminar la carta con m\xE1s poder del campo."
   cardDescription: "Puede eliminar la carta con m\xE1s poder del campo."
   isGold: 1
   cardType: 0
@@ -24,4 +23,4 @@ MonoBehaviour:
   melee: 0
   ranged: 1
   siege: 0
-  attackPower: 3
+  attackPower: 6

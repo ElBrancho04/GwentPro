@@ -14,6 +14,7 @@ public class ShowCard : MonoBehaviour
     public GameObject melee;
     public GameObject ranged;
     public GameObject siege;
+    public GameObject gold;
 
     void Start()
     {
@@ -28,12 +29,23 @@ public class ShowCard : MonoBehaviour
 
         nameText.text = "" + gameManager.showedCard.card.cardName;
         descriptionText.text = "" + gameManager.showedCard.card.cardDescription;
-        attackPowerText.text = "" + gameManager.showedCard.card.attackPower;
+        if (gameManager.showedCard.card.cardType == CardType.Unit)
+        {
+        attackPowerText.text = "" + (gameManager.showedCard.card.attackPower + gameManager.showedCard.card.powerVar);
         melee.SetActive(gameManager.showedCard.card.melee);
         ranged.SetActive(gameManager.showedCard.card.ranged);
         siege.SetActive(gameManager.showedCard.card.siege);
         }
-        
+        else
+        {
+            attackPowerText.text = "Sp";
+            melee.SetActive(false);
+            ranged.SetActive(false);    
+            siege.SetActive(false);
+        }
+        gold.SetActive(gameManager.showedCard.card.isGold);
+
+        }
     }
 }
         

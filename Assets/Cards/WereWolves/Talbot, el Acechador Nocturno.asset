@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Talbot, el Acechador Nocturno
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  id: 3
+  id: 16
   cardName: 'Talbot, el Acechador Nocturno '
-  powerDescription: 'Talbot, el Acechador Nocturno '
-  cardDescription: 'Talbot, el Acechador Nocturno '
-  isGold: 0
+  cardDescription: Puede eliminar la carta con mas poder del campo.
+  isGold: 1
   cardType: 0
   isActive: 0
   player: 2
