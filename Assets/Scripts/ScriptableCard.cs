@@ -25,6 +25,7 @@ public class CardData : ScriptableObject
     public int efectFactor;
     public int powerVar;
     public bool playEfect;
+    public int actPower;
  
     // Propiedades específicas para cartas de unidad
     public bool melee;

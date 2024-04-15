@@ -16,6 +16,7 @@ public class CardUI : MonoBehaviour
     public GameObject ranged;
     public GameObject siege;
     public GameObject gold;
+    public int actPower;
 
     void Start()
     {
@@ -32,7 +33,8 @@ public class CardUI : MonoBehaviour
         melee.SetActive(card.melee);
         ranged.SetActive(card.ranged);
         siege.SetActive(card.siege);
-        attackPowerText.text = "" + (card.attackPower + card.powerVar);
+        card.actPower = actPower = card.attackPower + card.powerVar;
+        attackPowerText.text = "" + actPower;
         }
         
         if (gameManager.selectedCard != this)
@@ -51,6 +53,8 @@ public class CardUI : MonoBehaviour
     }
     public void OnClick()
     {
+        if (gameManager.playerTurn == 0 && card.isActive)
+        gameManager.UIcardToPlayEfct = this;
         if (card.player == gameManager.playerTurn && gameManager.playerPass[card.player - 1] == false)
         {
 

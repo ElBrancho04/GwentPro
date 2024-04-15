@@ -20,7 +20,7 @@ MonoBehaviour:
   cardType: 0
   isActive: 0
   player: 1
-  efectFactor: 0
+  efectFactor: -1
   powerVar: 0
   playEfect: 0
   actPower: 0

@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public GameObject punto2P2;
     public RoundWinnerCalculator roundWinnerCalculator;
     public File fileToPlayEfct;
+    public CardUI UIcardToPlayEfct;
+    public CardData cardToPlayEfct;
+    public File[] tablero;
 
     void LateUpdate()
     {
@@ -45,8 +48,6 @@ public class GameManager : MonoBehaviour
         cardSpawner.fieldTransform = playerHand1.transform;
 
         cardSpawner.SpawnCard(playerDeck1.DrawCard());
-        yield return new WaitForSecondsRealtime(1f);
-        cardSpawner.SpawnCard(playerDeck1.DrawCard());
 
         cardSpawner.cardPrefab = cardPrefab2;
         cardSpawner.fileFile = playerHand2;
@@ -55,10 +56,18 @@ public class GameManager : MonoBehaviour
         cardSpawner.SpawnCard(playerDeck2.DrawCard());
         yield return new WaitForSecondsRealtime(1f);
         cardSpawner.SpawnCard(playerDeck2.DrawCard());
+
+        cardSpawner.cardPrefab = cardPrefab1;
+        cardSpawner.fileFile = playerHand1;
+        cardSpawner.fieldTransform = playerHand1.transform;
+
+        cardSpawner.SpawnCard(playerDeck1.DrawCard());
     }
     
     void Update()
     {
+        if (UIcardToPlayEfct != null)
+        cardToPlayEfct = UIcardToPlayEfct.card;
         if (showedCard != null && showedCard.card.player != showCard1.player)
         {
             showCard1.gameObject.SetActive(false);

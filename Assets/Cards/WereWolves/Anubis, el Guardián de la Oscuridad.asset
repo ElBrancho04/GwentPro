@@ -20,6 +20,10 @@ MonoBehaviour:
   cardType: 0
   isActive: 0
   player: 2
+  efectFactor: 1
+  powerVar: 0
+  playEfect: 0
+  actPower: 0
   melee: 0
   ranged: 1
   siege: 0
