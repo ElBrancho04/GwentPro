@@ -7,11 +7,13 @@ public class Efects : MonoBehaviour
     public GameManager gameManager;
     public Aument aument;
     public DelCard delCard;
+    public WeatherField weatherField;
 
     void Start()
     {
         aument = FindAnyObjectByType<Aument>();
         delCard = FindAnyObjectByType<DelCard>();
+        weatherField = FindAnyObjectByType<WeatherField>();
     }
 
     public void PlayEfect(CardData card)
@@ -35,13 +37,33 @@ public class Efects : MonoBehaviour
 
         if (cardID == 1 || cardID == 17) //Duplicar el poder de una carta
         {
-            gameManager.playerTurn = 0;
-            aument.playEfectC = true;
+            bool thereAreSilver = false;
+            for (int i = 0; i < gameManager.tablero.Length; i++)
+            {
+                for (int j = 0; j < gameManager.tablero[i].cards.Count; j++)
+                {
+                    if (gameManager.tablero[i].player == card.player && !gameManager.tablero[i].cards[j].isGold)
+                    {
+                        thereAreSilver = true;
+                        break;
+                    }
+                    if (thereAreSilver)
+                    break;
+                }
+            }
+            if (thereAreSilver)
+            {
+                gameManager.playerTurn = 0;
+                aument.playEfectC = true;
+            }
+            else
+            gameManager.playerTurn = card.player%2 + 1;
         }
 
         if (cardID == 2 || cardID == 16) //Eliminar la carta con mas poder del campo
         {
-            List<CardUI> list = new List<CardUI>(){new CardUI()};
+            CardUI cardUI = null;
+            List<CardUI> list = new List<CardUI>(){cardUI};
             
             for (int i = 0; i < gameManager.tablero.Length; i++)
             {
@@ -66,7 +88,8 @@ public class Efects : MonoBehaviour
             else if (list.Count == 1)
             {
                 list[0].transform.GetComponentInParent<File>().cards.Remove(list[0].card);
-                Destroy(list[0].gameObject);  
+                Destroy(list[0].gameObject);
+                gameManager.playerTurn = card.player%2 + 1;  
             } 
         }
 
@@ -93,6 +116,7 @@ public class Efects : MonoBehaviour
                     gameManager.tablero[i].cards[j].powerVar = average - gameManager.tablero[i].cards[j].attackPower;
                 }
             }
+            gameManager.playerTurn = card.player%2 + 1;
         }
 
         if (cardID == 5 || cardID == 20 || cardID == 25) //Robar dos cartas
@@ -129,11 +153,13 @@ public class Efects : MonoBehaviour
                     gameManager.cardSpawner.SpawnCard(playerDeck.DrawCard());}
                 }
             }
+            gameManager.playerTurn = card.player%2 + 1;
         }
 
         if (cardID == 7 || cardID == 21) //Eliminar la carta con menos poder del campo rival
         {
-            List<CardUI> list = new List<CardUI>(){new CardUI()};
+            CardUI cardUI = null;
+            List<CardUI> list = new List<CardUI>(){cardUI};
             
             for (int i = 0; i < gameManager.tablero.Length; i++)
             {
@@ -155,23 +181,27 @@ public class Efects : MonoBehaviour
                 delCard.cardList = list;
                 delCard.delCard = true;
             }
-            else if (list.Count == 1)
+            else if (list.Count == 1 && list[0] != null)
             {
                 list[0].transform.GetComponentInParent<File>().cards.Remove(list[0].card);
-                Destroy(list[0].gameObject);  
+                Destroy(list[0].gameObject);
+                gameManager.playerTurn = card.player%2 + 1;  
             }
+            else
+            gameManager.playerTurn = card.player%2 + 1;
         }
 
         if (cardID == 9 || cardID == 24) //Limpiar la fila con menos unidades
         {
-            List<File> list = new List<File>(){new File()};
+            File file = null;
+            List<File> list = new List<File>(){file};
             for (int i = 0; i < gameManager.tablero.Length; i++)
             {  
                 if (gameManager.tablero[i].cards.Count > 0 && (list[0] == null || gameManager.tablero[i].cards.Count < list[0].cards.Count))
                 {
                     list = new List<File>(){gameManager.tablero[i]};
                 }
-                else if (gameManager.tablero[i].cards.Count == list[0].cards.Count)
+                else if (list[0] != null && gameManager.tablero[i].cards.Count == list[0].cards.Count)
                 {
                     list.Add(gameManager.tablero[i]);
                 }
@@ -184,12 +214,94 @@ public class Efects : MonoBehaviour
             }
             else if (list.Count == 1)
             {
-                for (int i = 0; i < list[0].cards.Count; i++)
-                {
-                    Destroy(list[0].transform.GetChild(0).gameObject);
-                }
+                int count = list[0].cards.Count;
                 list[0].cards.Clear();
+                gameManager.playerTurn = card.player%2 + 1;
+                for (int i = 0; i < count; i++)
+                {
+                    Destroy(list[0].transform.GetChild(i).gameObject);
+                }
             }
+            
+        }
+
+         if (cardID == 10) //Multiplicar power por cant de cartas iguales
+        {
+            int aument = -1;
+            for (int i = 0; i < gameManager.tablero[0].cards.Count; i++)
+            {
+                if (gameManager.tablero[0].cards[i].id == 10)
+                {
+                    aument++;
+                }
+            }
+
+            card.powerVar += 4*aument;
+            gameManager.playerTurn = card.player%2 + 1;
+        }
+
+        if (cardID == 11 || cardID == 26) //Eliminar un clima enemigo
+        {
+            CardUI cardUI = null; 
+            List<CardUI> list = new List<CardUI>(){cardUI};
+            for (int i = 0; i < weatherField.cards.Count; i++)
+            {
+                if (weatherField.cards[i].player != card.player)
+                {
+                    if (list[0] == null)
+                    list[0] = weatherField.transform.GetChild(i).gameObject.GetComponent<CardUI>();
+                    else
+                    list.Add(weatherField.transform.GetChild(i).gameObject.GetComponent<CardUI>());
+                }
+            }
+
+            if (list.Count > 1)
+            {
+                gameManager.playerTurn = 0;
+                delCard.cardList = list;
+                delCard.delWeather = true;
+            }
+            else if (list[0] != null)
+            {
+                list[0].transform.GetComponentInParent<WeatherField>().cards.Remove(list[0].card);
+                Destroy(list[0].gameObject);
+                gameManager.playerTurn = card.player%2 + 1;
+            }
+            else
+            gameManager.playerTurn = card.player%2 + 1;
+        }
+
+        if (cardID == 15 || cardID == 30) //Señuelo
+        {
+            bool thereAreUnits = false;
+            bool thereAreCardsInHand = false;
+            for (int i = 0; i < gameManager.tablero.Length; i++)
+            {
+                for (int j = 0; j < gameManager.tablero[i].cards.Count; j++)
+                {
+                    if (gameManager.tablero[i].player == card.player && gameManager.tablero[i].cards[j].cardType == CardType.Unit)
+                    {
+                        thereAreUnits = true;
+                        break;
+                    }
+                    if (thereAreUnits)
+                    break;
+                }
+            }
+
+            if ((card.player == 1 && gameManager.playerHand1.cards.Count > 0)||(card.player == 2 && gameManager.playerHand2.cards.Count > 0))
+            {
+                thereAreCardsInHand = true;
+            }
+
+            if (thereAreUnits && thereAreCardsInHand)
+            {
+                gameManager.playerTurn = 0;
+                delCard.card = card;
+                delCard.change = true;
+            }
+            else
+            gameManager.playerTurn = card.player%2 + 1;
         }
 
     }} 

@@ -19,7 +19,6 @@ public class Dra : MonoBehaviour
     void Start()
     {
         StartCoroutine(InitialDrawingCards());
-        gameManager.playerTurn = 1;
     }
 
     IEnumerator InitialDrawingCards()
@@ -36,9 +35,10 @@ public class Dra : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             initialDrawing.SpawnCard(deck.DrawCard());
-            yield return new WaitForSecondsRealtime(1f);
-
+            yield return new WaitForSecondsRealtime(0.3f);
         }
+
+        gameManager.playerTurn = gameManager.initialPlayerTurn;
     }
 
 }

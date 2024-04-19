@@ -19,13 +19,16 @@ public class CardData : ScriptableObject
     public string cardDescription;
     public bool isGold;
     public CardType cardType;
-    bool isUnitCard;
     public bool isActive = false;
     public int player;
     public int efectFactor;
     public int powerVar;
     public bool playEfect;
     public int actPower;
+    public int aumPower;
+    public bool aument;
+    public bool weather;
+    public int decrs;
  
     // Propiedades específicas para cartas de unidad
     public bool melee;

@@ -27,7 +27,20 @@ public class GameManager : MonoBehaviour
     public File fileToPlayEfct;
     public CardUI UIcardToPlayEfct;
     public CardData cardToPlayEfct;
+    public CardUI handUIcardToPlayEfct;
+    public CardData handCardToPlayEfct;
     public File[] tablero;
+    public GameObject pasar1;
+    public GameObject pasar2;
+    public GameObject lider1;
+    public GameObject lider2;
+    public int initialPlayerTurn;
+    public int realTurn;
+    public bool confirm;
+    public GameObject confirmButton1;
+    public GameObject confirmButton2;
+    public GameObject ayuda1;
+    public GameObject ayuda2;
 
     void LateUpdate()
     {
@@ -38,6 +51,54 @@ public class GameManager : MonoBehaviour
             playerPass[1] = false;
             StartCoroutine(DrawCards(playerDeck1,playerDeck2));
         }
+
+        StartCoroutine(Wait());
+        IEnumerator Wait()
+        {
+            yield return new WaitForSecondsRealtime(2.5f);
+            if (playerTurn == 1)
+            {
+                pasar1.SetActive(true);
+                lider1.SetActive(true);
+                ayuda1.SetActive(true);
+                pasar2.SetActive(false);
+                lider2.SetActive(false);
+                ayuda2.SetActive(false);
+                realTurn = 1;
+            }
+            
+            if (playerTurn == 2)
+            {
+                pasar2.SetActive(true);
+                lider2.SetActive(true);
+                ayuda2.SetActive(true);
+                pasar1.SetActive(false);
+                lider1.SetActive(false);
+                ayuda1.SetActive(false);
+                realTurn = 2;
+            }
+        }
+
+        for (int i = 0; i < tablero.Length; i++)
+        {
+            for (int j = 0; j < tablero[i].cards.Count; j++)
+            {
+                if (tablero[i].cards[j].cardType == CardType.Special && playerTurn == tablero[i].cards[j].player%2 + 1)
+                {
+                    tablero[i].cards.Remove(tablero[i].cards[j]);
+                    Destroy(tablero[i].transform.GetChild(j).gameObject);
+                }
+            }
+        }
+
+        if (playerTurn == 1 || playerTurn == 2)
+        {
+            cardToPlayEfct = handCardToPlayEfct = null;
+            UIcardToPlayEfct = handUIcardToPlayEfct = null;
+            fileToPlayEfct = null;
+        }
+        else
+        selectedCard = null;
     }
 
     
@@ -68,6 +129,8 @@ public class GameManager : MonoBehaviour
     {
         if (UIcardToPlayEfct != null)
         cardToPlayEfct = UIcardToPlayEfct.card;
+        if (handUIcardToPlayEfct != null)
+        handCardToPlayEfct = handUIcardToPlayEfct.card;
         if (showedCard != null && showedCard.card.player != showCard1.player)
         {
             showCard1.gameObject.SetActive(false);
@@ -95,6 +158,25 @@ public class GameManager : MonoBehaviour
 
         if(roundsWon2 == 2)
         punto2P2.SetActive(true);
+
+        if (playerPass[0] && playerTurn == 1)
+        playerTurn = 2;
+
+        if (playerPass[1] && playerTurn == 2)
+        playerTurn = 1;
+
+        if (playerTurn == 0)
+        {
+            if (pasar1.activeSelf)
+            confirmButton1.SetActive(true);
+            if (pasar2.activeSelf)
+            confirmButton2.SetActive(true);
+        }
+        else
+        {
+            confirmButton1.SetActive(false);
+            confirmButton2.SetActive(false);
+        }
     }
 
     public void RemoveCard(GameObject card)
@@ -110,4 +192,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(2.5f);
         Destroy(card);
     }
+
+    public void Confirm(GameObject confirmButton)
+    {
+        confirm = true;
+        confirmButton.SetActive(false);
+    }
+
 }

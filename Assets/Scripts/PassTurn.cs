@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PassTurn : MonoBehaviour
 {
-    public int player = -1;
+    public int player;
     public GameManager gameManager;
     
     public void OnClick()

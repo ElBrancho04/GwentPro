@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6738650505830526535}
   - component: {fileID: 5190321445931596447}
   - component: {fileID: 8670915427780097087}
-  - component: {fileID: 7779369451752660079}
   - component: {fileID: 9080389533320183128}
   - component: {fileID: 7958943406752951321}
   - component: {fileID: 7789258347125600852}
+  - component: {fileID: 8588579130694305686}
   m_Layer: 5
   m_Name: Aumentos
   m_TagString: Untagged
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.11764706}
+  m_Color: {r: 0.87058824, g: 0.6156863, b: 0.6156863, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -79,26 +79,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7779369451752660079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4200281237560746847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac7371acf5a249d42aad1a3f25f3679e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  cards: []
-  melee: 0
-  ranged: 0
-  siege: 0
-  player: 1
-  fileTransform: {fileID: 6738650505830526535}
-  hand: 1
 --- !u!114 &9080389533320183128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,8 +120,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7779369451752660079}
-          m_TargetAssemblyTypeName: PlayerHand, Assembly-CSharp
+        - m_Target: {fileID: 8588579130694305686}
+          m_TargetAssemblyTypeName: AumentZone, Assembly-CSharp
           m_MethodName: OnClick
           m_Mode: 1
           m_Arguments:
@@ -197,3 +177,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 130}
   m_EdgeRadius: 0
+--- !u!114 &8588579130694305686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200281237560746847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6267dfb885aeba14dac76301fef33b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  file: {fileID: 0}
+  card: {fileID: 0}
+  player: 0

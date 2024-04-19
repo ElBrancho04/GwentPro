@@ -20,6 +20,14 @@ MonoBehaviour:
   cardType: 1
   isActive: 0
   player: 1
+  efectFactor: -2
+  powerVar: 0
+  playEfect: 0
+  actPower: 0
+  aumPower: 0
+  aument: 0
+  weather: 1
+  decrs: -2
   melee: 0
   ranged: 0
   siege: 0

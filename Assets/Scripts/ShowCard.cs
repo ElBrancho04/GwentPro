@@ -31,7 +31,7 @@ public class ShowCard : MonoBehaviour
         descriptionText.text = "" + gameManager.showedCard.card.cardDescription;
         if (gameManager.showedCard.card.cardType == CardType.Unit)
         {
-        attackPowerText.text = "" + (gameManager.showedCard.card.attackPower + gameManager.showedCard.card.powerVar);
+        attackPowerText.text = "" + gameManager.showedCard.card.actPower;
         melee.SetActive(gameManager.showedCard.card.melee);
         ranged.SetActive(gameManager.showedCard.card.ranged);
         siege.SetActive(gameManager.showedCard.card.siege);

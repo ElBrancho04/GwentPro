@@ -13,6 +13,8 @@ public class RoundWinnerCalculator : MonoBehaviour
     public int totalPoints1;
     public int totalPoints2;
     public GameManager gameManager;
+    public int cardsInField1;
+    public int cardsInField2;
 
     public void RoundWinnerCal()
     {
@@ -23,14 +25,17 @@ public class RoundWinnerCalculator : MonoBehaviour
         {
             gameManager.roundsWon1++;
             gameManager.playerTurn = 1;
+            StartCoroutine(EndOfRoundRemoving());
             return;
         }
         if (totalPoints1 < totalPoints2)
         {
             gameManager.roundsWon2++;
             gameManager.playerTurn = 2;
+            StartCoroutine(EndOfRoundRemoving());
             return;
         }
+        StartCoroutine(EndOfRoundRemoving());
         return;
     }
 
@@ -41,6 +46,17 @@ public class RoundWinnerCalculator : MonoBehaviour
         {
            result += file.cards[i].attackPower; 
         }
+        file.cards.Clear();
         return result;
+    }
+
+    IEnumerator EndOfRoundRemoving()
+    {
+        int totalCardsInField = cardsInField1 + cardsInField2;
+        for (int i = 0; i < totalCardsInField; i++)
+        {
+            yield return new WaitForSecondsRealtime(0.4f);
+            Destroy(FindObjectOfType<IsActive>().gameObject);
+        }
     }
 }

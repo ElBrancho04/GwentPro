@@ -1,37 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class File : MonoBehaviour
 {
       public GameManager gameManager;
-      public List<CardData> cards = new List<CardData>();   
+      public List<CardData> cards;   
       public bool melee = false;
       public bool ranged = false;
       public bool siege = false;
       public int player;
       public Transform fileTransform;
       public bool hand;
+      public int decrs;
+      public bool initialDevolution;
+      public DelCard delCard;
+      public GameObject initialDevolutionButton;
+      public GameObject selected;
 
 
       public void OnClick()
       {
             if (gameManager.playerTurn == 0 && !hand)
             gameManager.fileToPlayEfct = this;
-            if (cards.Count < 10 && gameManager.selectedCard != null && gameManager.playerPass[player - 1] == false && player == gameManager.selectedCard.card.player && ((gameManager.selectedCard.card.melee == melee && melee == true )||(gameManager.selectedCard.card.ranged == ranged && ranged == true )||(gameManager.selectedCard.card.siege == siege && siege == true )))
+            if (cards.Count < 10 && gameManager.selectedCard != null && !gameManager.selectedCard.card.isActive && gameManager.playerPass[player - 1] == false && player == gameManager.selectedCard.card.player && ((gameManager.selectedCard.card.melee == melee && melee == true )||(gameManager.selectedCard.card.ranged == ranged && ranged == true )||(gameManager.selectedCard.card.siege == siege && siege == true )))
             {
                   gameManager.selectedCard.transform.SetParent(fileTransform);
                   cards.Add(gameManager.selectedCard.card);
                   gameManager.selectedCard.card.isActive = gameManager.selectedCard.card.playEfect = true;
                   gameManager.selectedCard = null;
-                  if (player == 1 && gameManager.playerPass[1] == false)
-                  {
-                        gameManager.playerTurn = 2;
-                  }
-                  else if(gameManager.playerPass[0] == false)
-                  {
-                        gameManager.playerTurn = 1;
-                  }
             }
       }
       void Update()
@@ -43,5 +41,24 @@ public class File : MonoBehaviour
                         cards.RemoveAt(i);
                   }
             }
+
+            if (hand && !initialDevolution && gameManager.playerTurn == player)
+            {
+                  StartCoroutine(Wait());
+                  IEnumerator Wait()
+                  {
+                        yield return null;
+                        gameManager.playerTurn = 0;
+                  }
+                  initialDevolutionButton.SetActive(true);
+                  delCard.player = player;
+                  delCard.initialDevolution = true;
+                  initialDevolution = true;
+            }
+
+            if (gameManager.fileToPlayEfct == this)
+            selected.SetActive(true);
+            else
+            selected.SetActive(false);
       }
 }
