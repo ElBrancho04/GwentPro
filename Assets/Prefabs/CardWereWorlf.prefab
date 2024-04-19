@@ -1205,6 +1205,7 @@ MonoBehaviour:
   actPower: 0
   back: {fileID: 5030391066733902090}
   selected: {fileID: 1044859666790777157}
+  image: {fileID: 6853602849430970124}
 --- !u!114 &4414809654998830309
 MonoBehaviour:
   m_ObjectHideFlags: 0

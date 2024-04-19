@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class File : MonoBehaviour
       public DelCard delCard;
       public GameObject initialDevolutionButton;
       public GameObject selected;
+      public TextMeshProUGUI puntosEnFilaText;
+      public int position;
 
 
       public void OnClick()
@@ -60,5 +63,16 @@ public class File : MonoBehaviour
             selected.SetActive(true);
             else
             selected.SetActive(false);
+
+            if (!hand)
+            {
+                  int puntosEnFila = 0;
+                  for (int i = 0; i < cards.Count; i++)
+                  {
+                        puntosEnFila += cards[i].actPower;
+                  }
+                  puntosEnFilaText.text = "" + puntosEnFila;
+                  gameManager.puntos[position] = puntosEnFila;
+            }
       }
 }

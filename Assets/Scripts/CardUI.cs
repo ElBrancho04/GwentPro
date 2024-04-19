@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardUI : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class CardUI : MonoBehaviour
     public int actPower;
     public GameObject back;
     public GameObject selected;
+    public Image image;
 
     void Start()
     {
@@ -27,6 +29,8 @@ public class CardUI : MonoBehaviour
 
     void Update()
     {
+        if (card.cardImage != null)
+        image.sprite = card.cardImage;
         nameText.text = "" + card.cardName;
         descriptionText.text = "" + card.cardDescription;
         if (card.cardType == CardType.Unit)

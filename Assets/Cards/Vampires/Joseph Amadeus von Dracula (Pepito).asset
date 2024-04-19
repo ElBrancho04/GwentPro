@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139b60a6b2dfe84ebd148441f20cff8, type: 3}
   m_Name: Joseph Amadeus von Dracula (Pepito)
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: e74bb27225012014499fe2a24ed2cf07, type: 3}
   id: 1
   cardName: Joseph Amadeus von Dracula (Pepito)
   cardDescription: Puede duplicar el poder de ataque de una unidad aliada en el campo.
@@ -20,6 +20,14 @@ MonoBehaviour:
   cardType: 0
   isActive: 0
   player: 1
+  efectFactor: 0
+  powerVar: 0
+  playEfect: 0
+  actPower: 0
+  aumPower: 0
+  aument: 0
+  weather: 0
+  decrs: 0
   melee: 1
   ranged: 1
   siege: 0

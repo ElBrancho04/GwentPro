@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShowCard : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ShowCard : MonoBehaviour
     public GameObject ranged;
     public GameObject siege;
     public GameObject gold;
+    public Image image;
 
     void Start()
     {
@@ -27,6 +29,8 @@ public class ShowCard : MonoBehaviour
         if(gameManager.showedCard != null && player == gameManager.showedCard.card.player)
         {
 
+        if (gameManager.showedCard.card.cardImage != null)
+        image.sprite = gameManager.showedCard.card.cardImage;
         nameText.text = "" + gameManager.showedCard.card.cardName;
         descriptionText.text = "" + gameManager.showedCard.card.cardDescription;
         if (gameManager.showedCard.card.cardType == CardType.Unit)

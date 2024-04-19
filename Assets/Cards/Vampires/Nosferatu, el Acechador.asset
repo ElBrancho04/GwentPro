@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139b60a6b2dfe84ebd148441f20cff8, type: 3}
   m_Name: Nosferatu, el Acechador
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: ec013cccba7d8114587c43b48769a527, type: 3}
   id: 4
   cardName: Nosferatu, el Acechador
   cardDescription: Iguala el poder de todas las cartas del campo al promedio de los
@@ -21,6 +21,14 @@ MonoBehaviour:
   cardType: 0
   isActive: 0
   player: 1
+  efectFactor: 0
+  powerVar: 0
+  playEfect: 0
+  actPower: 0
+  aumPower: 0
+  aument: 0
+  weather: 0
+  decrs: 0
   melee: 0
   ranged: 1
   siege: 1

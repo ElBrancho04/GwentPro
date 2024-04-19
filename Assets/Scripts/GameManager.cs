@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -41,6 +42,22 @@ public class GameManager : MonoBehaviour
     public GameObject confirmButton2;
     public GameObject ayuda1;
     public GameObject ayuda2;
+    public int[] puntos;
+    public TextMeshProUGUI puntosTotales1;
+    public TextMeshProUGUI puntosTotales2;
+    public GameObject turn1;
+    public GameObject turn2;
+    public bool waitForActivate1;
+    public bool waitForActivate2;
+
+    void Start()
+    {
+        puntos = new int[6];
+        if (initialPlayerTurn == 1)
+        waitForActivate1 = true;
+        else
+        waitForActivate2 = true;
+    }
 
     void LateUpdate()
     {
@@ -176,6 +193,20 @@ public class GameManager : MonoBehaviour
         {
             confirmButton1.SetActive(false);
             confirmButton2.SetActive(false);
+        }
+
+        puntosTotales1.text = "" + (puntos[0] + puntos[1] + puntos[2]);
+        puntosTotales2.text = "" + (puntos[3] + puntos[4] + puntos[5]);
+
+        if (realTurn == 1 && waitForActivate1)
+        {
+            turn1.SetActive(true);
+            waitForActivate2 = true;            
+        }
+        if (realTurn == 2 && waitForActivate2)
+        {
+            turn2.SetActive(true);
+            waitForActivate1 = true;
         }
     }
 

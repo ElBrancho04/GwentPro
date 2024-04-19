@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139b60a6b2dfe84ebd148441f20cff8, type: 3}
   m_Name: Pacto de Sangre
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: eb3b13a7b0486474fa6ba584d80ae065, type: 3}
   id: 27
   cardName: Pacto de Sangre
   cardDescription: Puede poner un clima que reduce en 2 el poder de una fila enemiga.

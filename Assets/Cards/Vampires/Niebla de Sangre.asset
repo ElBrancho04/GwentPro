@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139b60a6b2dfe84ebd148441f20cff8, type: 3}
   m_Name: Niebla de Sangre
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: a729809a27089d248b1d3cc7ff01c56f, type: 3}
   id: 13
   cardName: Niebla de Sangre
   cardDescription: Puede poner un clima que reduce en 1 el poder de una fila enemiga.

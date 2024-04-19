@@ -30,16 +30,6 @@ public class Lider : MonoBehaviour
                     }
                 }
             }
-            if (max1 != null)
-            {
-                StartCoroutine(Wait1());
-                IEnumerator Wait1()
-                {
-                    yield return new WaitForSecondsRealtime(0.5f);
-                    max1.GetComponentInParent<File>().cards.Remove(max1.card);
-                    Destroy(max1.gameObject);
-                }
-            }
 
             CardUI max2 = null;
             for (int i = 3; i < 6; i++)
@@ -58,15 +48,21 @@ public class Lider : MonoBehaviour
                     }
                 }
             }
-            if (max2 != null)
+            if (max1 != null && max2 != null)
             {
+                StartCoroutine(Wait1());
+                IEnumerator Wait1()
+                {
+                    yield return new WaitForSecondsRealtime(0.5f);
+                    max1.GetComponentInParent<File>().cards.Remove(max1.card);
+                    Destroy(max1.gameObject);
+                }
                 StartCoroutine(Wait2());
                 IEnumerator Wait2()
                 {
                     yield return new WaitForSecondsRealtime(0.8f);
                     max2.GetComponentInParent<File>().cards.Remove(max2.card);
-                    Destroy(max2.gameObject);
-                    gameManager.playerTurn = 2; 
+                    Destroy(max2.gameObject); 
                 }
             }
 

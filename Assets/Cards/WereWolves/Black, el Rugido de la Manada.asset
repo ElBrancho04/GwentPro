@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139b60a6b2dfe84ebd148441f20cff8, type: 3}
   m_Name: Black, el Rugido de la Manada
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: d853ddf7b6487d446ad21a423fcbf7a6, type: 3}
   id: 21
   cardName: Black, el Rugido de la Manada
   cardDescription: Puede eliminar la carta con menos poder del rival.
@@ -20,6 +20,14 @@ MonoBehaviour:
   cardType: 0
   isActive: 0
   player: 2
+  efectFactor: 0
+  powerVar: 0
+  playEfect: 0
+  actPower: 0
+  aumPower: 0
+  aument: 0
+  weather: 0
+  decrs: 0
   melee: 0
   ranged: 1
   siege: 0

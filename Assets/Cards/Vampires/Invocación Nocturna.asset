@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139b60a6b2dfe84ebd148441f20cff8, type: 3}
   m_Name: "Invocaci\xF3n Nocturna"
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: cdb1b782270ce3542a2fe36a4b6d1b11, type: 3}
   id: 14
   cardName: "Invocaci\xF3n Nocturna"
   cardDescription: Puede poner un aumento de 2 en una fila propia.
@@ -26,6 +26,8 @@ MonoBehaviour:
   actPower: 0
   aumPower: 0
   aument: 1
+  weather: 0
+  decrs: 0
   melee: 0
   ranged: 0
   siege: 0
