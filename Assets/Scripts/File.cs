@@ -52,6 +52,10 @@ public class File : MonoBehaviour
                   {
                         yield return null;
                         gameManager.playerTurn = 0;
+                        if (player == 1)
+                        gameManager.pasar1.SetActive(false);
+                        else
+                        gameManager.pasar2.SetActive(false);
                   }
                   initialDevolutionButton.SetActive(true);
                   delCard.player = player;
@@ -73,6 +77,12 @@ public class File : MonoBehaviour
                   }
                   puntosEnFilaText.text = "" + puntosEnFila;
                   gameManager.puntos[position] = puntosEnFila;
+            }
+            if (gameManager.playerPass[player - 1] && hand)
+            {
+                  initialDevolution = true;
+                  delCard.initialDevolution = false;
+                  initialDevolutionButton.SetActive(false);
             }
       }
 }

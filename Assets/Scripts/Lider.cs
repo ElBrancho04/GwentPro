@@ -70,8 +70,17 @@ public class Lider : MonoBehaviour
 
         if (player == 2)
         {
-            gameManager.playerTurn = 0;
-            delCard.fenrir = true;
+            bool thereAreCards = false;
+            for (int i = 3; i < 6; i++)
+            {
+                if (gameManager.tablero[i].cards.Count > 0)
+                thereAreCards = true;
+            }
+            if (thereAreCards)
+            {
+                gameManager.playerTurn = 0;
+                delCard.fenrir = true;
+            }
         }
     }
 

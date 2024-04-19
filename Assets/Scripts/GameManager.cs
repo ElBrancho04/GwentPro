@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public CardUI selectedCard;
-    public int playerTurn = 0;
+    public int playerTurn;
     public bool[] playerPass = new bool[2];
     public PlayerDeck playerDeck1;
     public PlayerDeck playerDeck2;
@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
     public bool waitForActivate1;
     public bool waitForActivate2;
 
+    public GameObject winner1;
+    public GameObject winner2;
+
     void Start()
     {
         puntos = new int[6];
@@ -61,18 +64,18 @@ public class GameManager : MonoBehaviour
 
     void LateUpdate()
     {
-        if (playerPass[0] == true && playerPass[1] == true)
+        /*if (playerPass[0] == true && playerPass[1] == true)
         {
             roundWinnerCalculator.RoundWinnerCal();
             playerPass[0] = false;
             playerPass[1] = false;
             StartCoroutine(DrawCards(playerDeck1,playerDeck2));
-        }
+        }*/
 
         StartCoroutine(Wait());
         IEnumerator Wait()
         {
-            yield return new WaitForSecondsRealtime(2.5f);
+            yield return new WaitForSecondsRealtime(0.5f);
             if (playerTurn == 1)
             {
                 pasar1.SetActive(true);
@@ -184,9 +187,9 @@ public class GameManager : MonoBehaviour
 
         if (playerTurn == 0)
         {
-            if (pasar1.activeSelf)
+            if (lider1.activeSelf)
             confirmButton1.SetActive(true);
-            if (pasar2.activeSelf)
+            if (lider2.activeSelf)
             confirmButton2.SetActive(true);
         }
         else
@@ -198,15 +201,38 @@ public class GameManager : MonoBehaviour
         puntosTotales1.text = "" + (puntos[0] + puntos[1] + puntos[2]);
         puntosTotales2.text = "" + (puntos[3] + puntos[4] + puntos[5]);
 
-        if (realTurn == 1 && waitForActivate1)
+        if (realTurn == 1 && waitForActivate1 && !playerPass[1])
         {
             turn1.SetActive(true);
             waitForActivate2 = true;            
         }
-        if (realTurn == 2 && waitForActivate2)
+        if (realTurn == 2 && waitForActivate2 && !playerPass[0])
         {
             turn2.SetActive(true);
             waitForActivate1 = true;
+        }
+
+        if (roundsWon1 == 2)
+        {
+            turn1.SetActive(false);
+            turn2.SetActive(false);
+            playerTurn = -3;
+            winner1.SetActive(true);
+        }
+        if (roundsWon2 == 2)
+        {
+            turn1.SetActive(false);
+            turn2.SetActive(false);
+            playerTurn = -3;
+            winner2.SetActive(true);
+        }
+
+        if (playerPass[0] == true && playerPass[1] == true)
+        {
+            roundWinnerCalculator.RoundWinnerCal();
+            playerPass[0] = false;
+            playerPass[1] = false;
+            StartCoroutine(DrawCards(playerDeck1,playerDeck2));
         }
     }
 

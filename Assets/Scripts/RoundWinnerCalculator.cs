@@ -25,7 +25,7 @@ public class RoundWinnerCalculator : MonoBehaviour
         {
             gameManager.roundsWon1++;
             gameManager.playerTurn = 1;
-            StartCoroutine(EndOfRoundRemoving());
+            //StartCoroutine(EndOfRoundRemoving());
             return;
         }
         if (totalPoints1 < totalPoints2)
