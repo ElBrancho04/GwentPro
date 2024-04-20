@@ -7,6 +7,7 @@ public class PassTurn : MonoBehaviour
       public int player;
       public GameManager gameManager;
       public File playerHand;
+      public GameObject turn;
 
       public void OnClick()
       {
@@ -20,9 +21,8 @@ public class PassTurn : MonoBehaviour
                   gameManager.playerTurn = 1;
             }
       }
-      /*void Update()
+      void OnDisable()
       {
-            if (playerHand.initialDevolution)
-            gameObject.SetActive(false);
-      }*/
+            turn.SetActive(true);
+      }
 }

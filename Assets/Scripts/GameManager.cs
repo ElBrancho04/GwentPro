@@ -47,31 +47,27 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI puntosTotales2;
     public GameObject turn1;
     public GameObject turn2;
-    public bool waitForActivate1;
-    public bool waitForActivate2;
-
     public GameObject winner1;
     public GameObject winner2;
 
     void Start()
     {
         puntos = new int[6];
-        if (initialPlayerTurn == 1)
-        waitForActivate1 = true;
-        else
-        waitForActivate2 = true;
     }
 
     void LateUpdate()
     {
-        /*if (playerPass[0] == true && playerPass[1] == true)
+        if (playerPass[0] == true && playerPass[1] == true)
         {
             roundWinnerCalculator.RoundWinnerCal();
             playerPass[0] = false;
             playerPass[1] = false;
             StartCoroutine(DrawCards(playerDeck1,playerDeck2));
-        }*/
-
+        }
+        if (playerTurn == 1)
+        realTurn = 1;
+        if (playerTurn == 2)
+        realTurn = 2;
         StartCoroutine(Wait());
         IEnumerator Wait()
         {
@@ -201,17 +197,6 @@ public class GameManager : MonoBehaviour
         puntosTotales1.text = "" + (puntos[0] + puntos[1] + puntos[2]);
         puntosTotales2.text = "" + (puntos[3] + puntos[4] + puntos[5]);
 
-        if (realTurn == 1 && waitForActivate1 && !playerPass[1])
-        {
-            turn1.SetActive(true);
-            waitForActivate2 = true;            
-        }
-        if (realTurn == 2 && waitForActivate2 && !playerPass[0])
-        {
-            turn2.SetActive(true);
-            waitForActivate1 = true;
-        }
-
         if (roundsWon1 == 2)
         {
             turn1.SetActive(false);
@@ -246,7 +231,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Wait(GameObject card)
     {
         Destroy(card.GetComponent<CardUI>());
-        yield return new WaitForSecondsRealtime(2.5f);
+        yield return new WaitForSecondsRealtime(0.3f);
         Destroy(card);
     }
 

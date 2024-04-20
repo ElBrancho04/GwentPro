@@ -22,7 +22,6 @@ public class File : MonoBehaviour
       public TextMeshProUGUI puntosEnFilaText;
       public int position;
 
-
       public void OnClick()
       {
             if (gameManager.playerTurn == 0 && !hand)

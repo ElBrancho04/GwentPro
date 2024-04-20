@@ -8,27 +8,29 @@ public class PressEnterToCont : MonoBehaviour
     public bool turnScreen;
     public GameManager gameManager;
     public int player;
+
+    void OnEnable()
+    {
+        StartCoroutine(Wait());
+        IEnumerator Wait()
+        {
+            yield return null;
+            if (gameManager.realTurn == player%2 + 1)
+            gameObject.SetActive(false);
+        }
+    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyUp(KeyCode.Return))
         {
-            StartCoroutine(Wait());
-            IEnumerator Wait()
+            if (turnScreen)
             {
-                yield return new WaitForSecondsRealtime(0.2f);
-                if (turnScreen)
-                {
-                    if (player == 1)
-                    gameManager.waitForActivate1 = false;
-                    else
-                    gameManager.waitForActivate2 = false;
-                    gameObject.SetActive(false);
-                }
-                else
-                {
-                    SceneManager.LoadScene("MenuScene");
-                }
-            }   
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                SceneManager.LoadScene("MenuScene");
+            }
         }
     }
 }
