@@ -8,6 +8,14 @@ public class Efects : MonoBehaviour
     public Aument aument;
     public DelCard delCard;
     public WeatherField weatherField;
+    public GameObject selectACard;
+    public GameObject selectAFile;
+    public GameObject selectAnAllyCard;
+    public GameObject selectAnEnemyCard;
+    public GameObject selectAnAllyFile;
+    public GameObject selectAnEnemyFile;
+    public GameObject selectAWeather;
+    public GameObject decoy;
 
     void Start()
     {
@@ -32,6 +40,7 @@ public class Efects : MonoBehaviour
         if (cardID == 3 || cardID == 8 || cardID == 18 || cardID == 23 || cardID == 6 || cardID == 22) //Aumentar una fila
         {
             gameManager.playerTurn = 0;
+            selectAnAllyFile.SetActive(true);
             aument.playEfectF = true; 
         }
 
@@ -54,6 +63,7 @@ public class Efects : MonoBehaviour
             if (thereAreSilver)
             {
                 gameManager.playerTurn = 0;
+                selectAnAllyCard.SetActive(true);
                 aument.playEfectC = true;
             }
             else
@@ -82,6 +92,7 @@ public class Efects : MonoBehaviour
             if (list.Count > 1)
             {
                 gameManager.playerTurn = 0;
+                selectACard.SetActive(true);
                 delCard.cardList = list;
                 delCard.delCard = true;
             }
@@ -178,6 +189,7 @@ public class Efects : MonoBehaviour
             if (list.Count > 1)
             {
                 gameManager.playerTurn = 0;
+                selectAnEnemyCard.SetActive(true);
                 delCard.cardList = list;
                 delCard.delCard = true;
             }
@@ -209,6 +221,7 @@ public class Efects : MonoBehaviour
             if (list.Count > 1)
             {
                 gameManager.playerTurn = 0;
+                selectAFile.SetActive(true);
                 delCard.fileList = list;
                 delCard.delFile = true;
             }
@@ -258,6 +271,7 @@ public class Efects : MonoBehaviour
             if (list.Count > 1)
             {
                 gameManager.playerTurn = 0;
+                selectAWeather.SetActive(true);
                 delCard.cardList = list;
                 delCard.delWeather = true;
             }
@@ -297,6 +311,7 @@ public class Efects : MonoBehaviour
             if (thereAreUnits && thereAreCardsInHand)
             {
                 gameManager.playerTurn = 0;
+                decoy.SetActive(true);
                 delCard.card = card;
                 delCard.change = true;
             }
