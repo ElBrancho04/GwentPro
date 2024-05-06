@@ -11,7 +11,7 @@ public class Lider : MonoBehaviour
 
     public void OnClick()
     {
-        if (player == 1)
+        if (player == 1 && gameManager.playerTurn == 1)
         {
             CardUI max1 = null;
             for (int i = 0; i < 3; i++)
@@ -68,7 +68,7 @@ public class Lider : MonoBehaviour
 
         }
 
-        if (player == 2)
+        if (player == 2 && gameManager.playerTurn == 2) 
         {
             bool thereAreCards = false;
             for (int i = 3; i < 6; i++)
